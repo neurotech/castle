@@ -2,7 +2,7 @@ services:
   castle:
     build: .
     ports:
-      - "3000:3000"
+      - "6000:6000"
     volumes:
       - castle-data:/app/data
     environment:

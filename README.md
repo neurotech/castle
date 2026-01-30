@@ -28,7 +28,7 @@ pnpm install
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:6000](http://localhost:6000) in your browser.
 
 ### Production (Docker)
 
@@ -38,7 +38,7 @@ docker-compose up --build
 
 # Or build manually
 docker build -t castle .
-docker run -p 3000:3000 -v castle-data:/app/data castle
+docker run -p 6000:6000 -v castle-data:/app/data castle
 ```
 
 ## Project Structure
