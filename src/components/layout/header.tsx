@@ -3,6 +3,7 @@
 import { Castle, Home, Wrench } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 
 const navItems = [
@@ -46,6 +47,7 @@ export function Header() {
                 </Link>
               );
             })}
+            <ThemeToggle />
           </nav>
         </div>
       </div>

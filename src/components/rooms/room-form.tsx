@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import type { Room } from "@/db/schema";
-import { ROOM_ICONS } from "@/lib/validations";
+import type { ROOM_ICONS } from "@/lib/validations";
 
 const iconOptions = [
   { value: "bedroom", label: "Bedroom" },

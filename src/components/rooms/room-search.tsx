@@ -2,37 +2,34 @@
 
 import { Search } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useEffect, useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { Input } from "@/components/ui/input";
 
 export function RoomSearch() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
-  const [query, setQuery] = useState(searchParams.get("q") || "");
+  const currentQuery = searchParams.get("q") || "";
+  const [query, setQuery] = useState(currentQuery);
 
-  const updateSearch = useCallback(
-    (value: string) => {
+  useEffect(() => {
+    // Only update URL if query differs from current URL param
+    if (query === currentQuery) return;
+
+    const timeoutId = setTimeout(() => {
       startTransition(() => {
         const params = new URLSearchParams(searchParams.toString());
-        if (value) {
-          params.set("q", value);
+        if (query) {
+          params.set("q", query);
         } else {
           params.delete("q");
         }
         router.push(`/?${params.toString()}`);
       });
-    },
-    [router, searchParams],
-  );
-
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      updateSearch(query);
     }, 300);
 
     return () => clearTimeout(timeoutId);
-  }, [query, updateSearch]);
+  }, [query, currentQuery, router, searchParams]);
 
   return (
     <div className="relative">
