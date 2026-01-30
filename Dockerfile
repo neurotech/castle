@@ -53,11 +53,11 @@ RUN mkdir -p /app/data/uploads && chown -R nextjs:nodejs /app/data
 # Set environment variables
 ENV DATABASE_PATH=/app/data/castle.db
 ENV UPLOADS_PATH=/app/data/uploads
-ENV PORT=6000
+ENV PORT=8080
 ENV HOSTNAME="0.0.0.0"
 
 USER nextjs
 
-EXPOSE 6000
+EXPOSE 8080
 
 CMD ["node", "server.js"]
