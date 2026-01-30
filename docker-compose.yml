@@ -1,0 +1,14 @@
+services:
+  castle:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - castle-data:/app/data
+    environment:
+      - DATABASE_PATH=/app/data/castle.db
+      - UPLOADS_PATH=/app/data/uploads
+    restart: unless-stopped
+
+volumes:
+  castle-data:
